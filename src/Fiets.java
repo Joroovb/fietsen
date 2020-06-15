@@ -20,7 +20,7 @@ public class Fiets {
         if (i == 0) {
             bandPlat = true;
             System.out.println( "*ppppssssssshhhhhhhhhtttttt*\n" +
-                                "Je hebt een lekke band! Je kan niet verder fietsen.");
+                                "Je hebt een lekke band! Je kan niet verder fietsen.\n");
         }
     }
 

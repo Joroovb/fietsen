@@ -13,8 +13,9 @@ public class User {
             System.out.println("Wat wil je doen?\n" +
                     "1 || Verder Fietsen\n" +
                     "2 || Mars eten\n" +
-                    "3 || Band plakken\n" +
-                    "4 || Stoppen met fietsen");
+                    "3 || Zelf band plakken\n" +
+                    "4 || Fietsenmaker band laten plakker\n" +
+                    "5 || Stoppen met fietsen");
 
             Scanner scanner = new Scanner(System.in);
             String userInput = scanner.nextLine();
@@ -35,41 +36,18 @@ public class User {
                     fietser.marsEten();
                     continue;
                 case "3":
-                    bandenPlakken(fietser, fiets, fietsenmaker);
+                    fietser.bandPlakker(fiets, fietser);
                     continue;
                 case "4":
+                    fietsenmaker.bandPlakker(fietser.portemonnee, fiets);
+                    continue;
+                case "5":
                     System.out.println("Het is een mooie tocht geweest. Morgen weer een dag!");
                     wilJeDoorSpelen = false;
                     break;
                 default:
                     System.out.println("Dat was geen geldige keuze, probeer het opnieuw!");
                 }
-        }
-    }
-    public void bandenPlakken(Fietser jan, Fiets fiets, Fietsenmaker kees) {
-        if (fiets.bandPlat) {
-            Scanner scanner3 = new Scanner(System.in);
-            String bandIn = scanner3.nextLine();
-
-            switch (bandIn) {
-
-                case "1":
-                    jan.bandPlakker();
-                    fiets.setPlatteBand();
-                    scanner3.close();
-
-                case "2":
-                    if (kees.bandPlakker(jan.portemonnee)) {
-                        jan.portemonnee -= 10;
-                        fiets.setPlatteBand();
-                        scanner3.close();
-                    } else {
-                        System.out.println("Je hebt niet genoeg geld om naar de fietsenmaker te gaan, je zult zelf je band moeten plakken!\n");
-                        scanner3.close();
-                    }
-            }
-        } else {
-            System.out.println("Je band is helemaal niet plat. Ga lekker fietsen!\n");
         }
     }
 }

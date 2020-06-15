@@ -30,11 +30,22 @@ public class Fietser {
         System.out.println("*je hebt 1.20 uitgegeven aan een Mars. je hebt nog " + portemonnee + " over.*\n");
         sound.eten();
     }
-    void bandPlakker() {
-        conditie -= 20;
-        System.out.println("*je conditie gaat met 20 omlaag en is nu " + conditie + ".*");
-        sound.bandPlakker();
+
+    void bandPlakker(Fiets fiets, Fietser fietser) {
+        if (fiets.bandPlat) {
+            if (fietser.conditie < 20) {
+                conditie -= 20;
+                System.out.println("*je conditie gaat met 20 omlaag en is nu " + conditie + ".*");
+                fiets.setPlatteBand();
+                sound.bandPlakker();
+            } else {
+                System.out.println("Je bent te moe om dit te doen, ga naar de fietsenmaker of eet een snack!\n");
+            }
+        } else {
+            System.out.println("Je band is helemaal niet plat. Ga toch fietsen!\n");
+        }
     }
+
     boolean teMoe() {
         if (conditie < 5) {
             System.out.println("Je bent te moe om verder te gaan. De trauma helikopter moet komen!\nGAME OVER!\n");
